@@ -1,0 +1,142 @@
+#include <stdio.h>
+int main() {
+    int x = 5;
+    if(x < 1)
+        printf("hello\n");
+    if(x == 5) 
+        printf("hi\n");
+    else
+        printf("no\n");
+    return 0;
+}
+o/p: hi
+---------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int x;
+int main() {
+    if(x)
+        printf("hi\n");
+    else 
+        printf("how are you\n");
+    return 0;
+}
+o/p: how are you
+exp: global and static variables are stored in the Data Segment (DS) when initialized and block start by symbol (BSS)` when uninitialized. These variables have a fixed memory location, and memory is allocated at compile time. Thus global and static variables have '0' as their default values
+----------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+void main() {
+	int x = 5;
+	if(true);
+		printf("hello\n");
+}
+
+o/p: it will throw an error
+exp: true will be included in #stdbool which is not mentioned
+----------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main() {
+    int x = 0;
+    if(x == 0)
+        printf("hi");
+    else
+        printf("how are you\n");
+        printf("hello\n");
+    return 0;
+}
+o/p: hihello
+----------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+
+int main() {
+    int x = 5;
+    if(x < 1);
+        printf("hello");
+    return 0;
+}
+o/p: hello
+exp: as we have a semicolon at the end of if statement it gives hello as o/p
+----------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main() {
+    double ch;
+    printf("enter a value btw 1 to 2: ");
+    scanf("%d", &ch);
+    switch(ch) {
+        case 1: printf("1\n");
+                break;
+        case 2: printf("2\n");
+                break;
+    }
+    return 0;
+}
+i/p: 1
+o/p: compile time error
+exp: The expression used in switch must be integral type ( int, char and enum). Any other type of expression is not allowed.
+---------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main() {
+    char * ch;
+    printf("enter a value btw 1 to 2: ");
+    scanf("%s", &ch);
+    switch(ch) {
+        case "1": printf("1\n");
+                break;
+        case "2": printf("2\n");
+                break;
+    }
+    return 0;
+}
+i/p: 1
+o/p: compile time error
+exp: The expression used in switch must be integral type ( int, char and enum). Any other type of expression is not allowed.
+----------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main() {
+    int ch;
+    printf("enter a value btw 1 to 2: ");
+    scanf("%d", &ch);
+    switch(ch) {
+        case 1: printf("1\n");
+        default: printf("2\n");
+    }
+    return 0;
+}	
+i/p: 1
+o/p: 1 2
+exp: there is no break statement
+-----------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main() {
+    int ch;
+    printf("enter a value btw 1 to 2: ");
+    scanf("%d", &ch);
+    switch(ch) {
+        case 1: printf("1\n");
+                break;
+                printf("hi\n");
+        default: printf("2\n");
+    }
+    return 0;
+}
+i/p: 2
+o/p: 2
+exp: since input is 2, switch statement will search for 2 in cases and it does not find it so control goes to default statement
+---------------------------------------------------------------------------------------------------------------------------------------------
+#include <stdio.h>
+int main() {
+    int ch;
+    printf("enter a value btw 1 to 2: ");
+    scanf("%d", &ch);
+    switch(ch, ch + 1) {
+        case 1: printf("1\n");
+                break;
+        case 2: printf("2\n");
+                break;
+    }
+    return 0;
+}
+o/p: 2
+exp: In the C and C++ programming languages, the comma operator (represented by the token ,) is a binary operator that evaluates its first operand and discards the result, and then evaluates the second operand and returns this value (and type).
+so the switch statement will first evaluate ch value which will be discarded and then ch + 1 will be evaluated so it will go to case 2.
+---------------------------------------------------------------------------------------------------------------------------------------------
